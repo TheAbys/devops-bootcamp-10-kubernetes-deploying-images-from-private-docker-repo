@@ -42,4 +42,4 @@ kubectl create secret docker-registry my-registry-key \
 
 ##### Copy config.json file from Minikube to my host
 
-`minikube cp minikube:/home/docker/.docker/config.json /users/nana/.docker/config.json`
+`minikube cp minikube:/home/docker/.docker/config.json /users/USERNAME/.docker/config.json`
