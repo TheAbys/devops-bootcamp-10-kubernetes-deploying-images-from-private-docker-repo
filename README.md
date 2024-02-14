@@ -74,3 +74,49 @@ When it doesn't work it shows an error ImagePullBackOff or ErrImagePull
     kubectl get pods
 
 Secrets must be in the same namespace.
+
+# 18 - Kubernetes Operators for Managing Complex Applications
+
+Kubernetes can completely manage lifecycle of stateless apps.
+But stateful apps are not that easy to automate. Therefore you can use the operator.
+Mostly required for stateful applications that cannot really be hosted outside the cluster.
+
+The operator can work with CRD (custom resource defintions) which are specifically defined for the stateful app like a specific database.
+
+# 19 - Secure your cluster - Authorization with RBAC
+
+RBAC Role Based Access Control
+
+## Ressource Role
+
+It is required to give each user the least privilege.
+This means a developer user should maybe not have the rights to create a new storage and also should not be allowed to edit specific services or deployments.
+
+For this we can use a namespace specific rolebinding on a user or group.
+
+rules:
+    - apiGroups
+      resources -> resource types pods, services, deployments,...
+      verbs -> actions like create or delete deployment
+
+## Ressource ClusterRole
+
+Administrators need permissions to administer the cluster, therefore here we can't use the namespace specific rolebindings.
+We use ClusterRole for that.
+
+API Server handles the authentication of all requests and checks if a user is allowed to connect.
+
+An Administrator manually creates certificates OR ldap for users which allows them to access the cluster.
+
+## Ressource ServiceAccount
+
+But we also need authorization for applications. Other services or tools do access the cluster.
+
+## API Access
+
+Check if the current user is able to execute a command
+
+    kubectl auth can-i create deployments
+
+
+User at first logs in through username/password, certificate, whatever
