@@ -1,3 +1,5 @@
+[Notes overview](https://github.com/TheAbys/devops-bootcamp-certification-project/blob/master/README.md)
+
 # 17 - Deploying Images in Kubernetes from private Docker repository
 
 At first login into aws ecr (again company proxy is required)
